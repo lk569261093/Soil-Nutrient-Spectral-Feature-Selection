@@ -7,18 +7,18 @@ from sklearn.svm import SVR
 from xgboost import XGBRegressor
 from lightgbm import LGBMRegressor
 
-# 1. 读取 Excel 数据
+# Read Excel data
 file_path = "SOM.xlsx"
 df = pd.read_excel(file_path, engine='openpyxl')
 
-# 2. 数据预处理
-X = df.iloc[:, 2:] # 提取光谱数据
-y = df.iloc[:, 1] # 提取土壤养分含量数据
+# Data preprocessing
+X = df.iloc[:, 2:] # Extract spectral data
+y = df.iloc[:, 1] # Extract soil nutrient content data
 
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
-# 定义回归模型列表
+# Define a list of regression models
 models = [
 ("Linear Regression", LinearRegression()),
 ("Ridge Regression", Ridge(alpha=1.0)),
@@ -30,10 +30,10 @@ models = [
 ("LightGBM Regressor", LGBMRegressor(n_estimators=100, learning_rate=0.1))
 ]
 
-# 创建一个空的DataFrame用于保存特征选择结果
+# Create an empty DataFrame to store the results of feature selection.
 selected_features_df = pd.DataFrame(columns=['Model', 'Selected Features'])
 
-# 对每个模型执行特征选择并将结果保存到DataFrame中
+# Perform feature selection on each model and save the results to a DataFrame.
 for model_name, model in models:
     selector = SelectFromModel(model, max_features=10)
     selector.fit(X_scaled, y)
@@ -46,6 +46,6 @@ for model_name, model in models:
     selected_features_df = pd.concat([selected_features_df, pd.DataFrame(new_row, index=[0])], ignore_index=True)
 
 
-# 输出结果到Excel文件中
-output_file_path = file_path.replace(".xlsx", "_特征选择.xlsx")
+# Export the results to an Excel file.
+output_file_path = file_path.replace(".xlsx", "_Feature selection.xlsx")
 selected_features_df.to_excel(output_file_path, index=False, engine='openpyxl')
