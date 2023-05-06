@@ -5,14 +5,23 @@ Three Methods for Extracting Soil Nutrient Spectral Characteristics
 #python3.10
 
 including the following Python libraries
+
 pandas
+
 sklearn (ensemble，feature_selection，linear_model，preprocessing, svm)
+
 numpy
+
 xgboost
+
 lightgbm
+
 deap
+
 scipy.optimize
+
 KFold
+
 
 Data format: the first row is the header, the first column is soil nutrient data, and the remaining columns are spectral data
 
