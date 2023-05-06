@@ -7,16 +7,16 @@ from sklearn.model_selection import KFold
 from sklearn.linear_model import LinearRegression
 import random
 
-# 读取 Excel 数据
+# Read Excel data
 data = pd.read_excel('TN.xlsx')
 X = data.iloc[:, 1:].values
 y = data.iloc[:, 0].values
 
-# 数据预处理
+# Data preprocessing
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
-# 定义适应度函数
+# Define the fitness function
 def fitness(individual, X, y):
     selected_features = np.where(np.array(individual) == 1)[0]
     if len(selected_features) == 0:
@@ -37,7 +37,7 @@ def fitness(individual, X, y):
     
     return np.mean(scores),
 
-# 遗传算法
+# Genetic algorithm
 def ga_feature_selection(X, y):
     n_features = X.shape[1]
 
@@ -66,7 +66,7 @@ def ga_feature_selection(X, y):
 
     return hof[0]
 
-# 模拟退火算法
+# Simulated annealing algorithm
 def sa_feature_selection(X, y):
     n_features = X.shape[1]
     bounds = [(0, 1) for _ in range(n_features)]
@@ -80,7 +80,7 @@ def sa_feature_selection(X, y):
 
     return binary_individual
 
-# 蒙特卡罗技巧排序光谱数据
+# Monte Carlo ranking technique for spectral data
 def monte_carlo_ranking(X, y, n_iter=10000):
     n_features = X.shape[1]
     scores = np.zeros(n_features)
@@ -121,7 +121,7 @@ def monte_carlo_ranking(X, y, n_iter=10000):
     top_10_indices = np.argsort(scores)[-10:][::-1]
     return top_10_indices
 
-# 执行特征选择
+# Perform feature selection
 ga_individual = ga_feature_selection(X_scaled, y)
 sa_individual = sa_feature_selection(X_scaled, y)
 mc_top_10_indices = monte_carlo_ranking(X_scaled, y)
