@@ -2,9 +2,9 @@
 
 Three Methods for Extracting Soil Nutrient Spectral Characteristics
 
-#python3.10
+# python3.10
 
-including the following Python libraries
+## including the following Python libraries
 
 pandas
 
