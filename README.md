@@ -6,28 +6,32 @@ Three Methods for Extracting Soil Nutrient Spectral Characteristics
 
 ## including the following Python libraries
 
-pandas
+  pandas
 
-sklearn (ensemble，feature_selection，linear_model，preprocessing, svm)
+  sklearn (ensemble，feature_selection，linear_model，preprocessing, svm)
 
-numpy
+  numpy
 
-xgboost
+  xgboost
 
-lightgbm
+  lightgbm
 
-deap
+  deap
 
-scipy.optimize
+  scipy.optimize
 
-KFold
+  KFold
 
 
-Data format: the first row is the header, the first column is soil nutrient data, and the remaining columns are spectral data
+# Data format:
+the first row is the header, the first column is soil nutrient data, and the remaining columns are spectral data
 
-REFCV to excle.py：Implemented Recursive Feature Elimination with Cross-Validation (RFECV) for Extracting Soil Nutrient 
+# REFCV to excle.py
+Implemented Recursive Feature Elimination with Cross-Validation (RFECV) for Extracting Soil Nutrient 
 Spectral Characteristics
 
-GA-SA-meng.py：Extracting Soil Nutrient Spectral Characteristic Bands based on Genetic Algorithm, Simulated Annealing Algorithm, and Monte Carlo Ranking Techniques
+# GA-SA-meng.py
+Extracting Soil Nutrient Spectral Characteristic Bands based on Genetic Algorithm, Simulated Annealing Algorithm, and Monte Carlo Ranking Techniques
 
-RF.py:Extracting Soil Nutrient Spectral Characteristic Bands based on Random Forest
+# RF.py
+Extracting Soil Nutrient Spectral Characteristic Bands based on Random Forest
